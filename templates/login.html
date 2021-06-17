@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if messages %}
+            {% for msg in messages %}
+            {{msg.message}}
+            {% endfor %}
+{% endif %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Login">
+</form><br><br>
+
+<h3><a href={% url 'sign_up'   %}>Signup</a></h3>
+<h3><a href={% url 'index'   %}>index</a></h3>
+<h3><a href="admin">admin</a></h3>
+</body>
+</html>

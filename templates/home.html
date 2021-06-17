@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <title>home</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block content %}
+        <h3>{{id.user_name|upper}}</h3><img height="50px" src="{{id.user_pic.url}}">
+        <h1>Contacts</h1>
+        {% if messages %}
+            {% for msg in messages %}
+            {{msg.message}}
+            {% endfor %}
+        {% endif %}
+    <h2><a href={% url 'student_data' %}>create</a></h2>
+    <h2><a href={% url 'logout'     %}>logout</a><br></h2>
+            <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Age</th>
+                      <th scope="col">Address</th>
+                      <th scope="col">Ph</th>
+                      <th scope="col">Image</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for x in data %}
+                    <tr>
+                      <th scope="row">{{forloop.counter}} </th>
+                      <td>{{x.name|upper}}</td>
+                      <td>{{x.age}}</td>
+                      <td>{{x.address|upper}}</td>
+                      <td>{{x.phone}}</td>
+                      <td><img height="50px" src="{{x.pic.url}}"></td>
+                      <td><a href={% url 'student_data_delete'  x.id  %}>delete</a></td>
+                      <td><a href={% url 'student_data_update'  x.id  %}  %}>edit</a></td>
+<!--                      <td><a href={% url 'student_data'    %}>create</a></td>-->
+                    </tr>
+                  {% endfor %}
+
+                  </tbody>
+                </table>
+
+
+    {% endblock %}
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" ></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
+  </body>
+</body>
+</html>

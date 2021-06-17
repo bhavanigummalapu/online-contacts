@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Welcome to online contacts application</h1>
+{% if messages %}
+            {% for msg in messages %}
+            {{msg.message}}
+            {% endfor %}
+{% endif %}<br><br>
+
+if alredy having account Please login---<a href={% url 'login'    %}>Login</a><br><br>
+Please create Account To save your Contacts in online---<a href={% url 'sign_up'   %}>Signup</a><br><br>
+
+
+
+
+</body>
+</html>
